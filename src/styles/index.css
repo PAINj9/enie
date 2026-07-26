@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Anchor links land below the fixed nav instead of under it. */
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-ink font-sans text-bone antialiased;
+    text-rendering: optimizeLegibility;
+    /* The particle burst throws Ñ outside the button box; without this a
+       stray particle can create a horizontal scrollbar on narrow screens. */
+    overflow-x: hidden;
+  }
+
+  /* One visible focus style for the whole site. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-lime ring-offset-2 ring-offset-ink;
+  }
+
+  /* On the light sections the offset colour has to flip, or the ring
+     disappears into the background. */
+  .bg-bone :focus-visible {
+    @apply ring-offset-bone;
+  }
+
+  ::selection {
+    @apply bg-lime text-ink;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
