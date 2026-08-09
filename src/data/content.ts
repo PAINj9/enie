@@ -20,7 +20,7 @@ export const HERO = {
     "El camino más rápido a la Ñ. Un clic, al portapapeles, y seguís con tu vida.",
   primary: "Copiar Ñ",
   secondary: "Copiar ñ",
-  hint: "También podés apretar la barra espaciadora",
+  hint: "O apretá la barra espaciadora para la ñ minúscula",
 } as const;
 
 /** Rotating success messages. The first one is the default. */

@@ -11,8 +11,11 @@ import Trivia from "./sections/Trivia";
 import WhereItLives from "./sections/WhereItLives";
 import { useCopy } from "./lib/copy-context";
 
+/** The lowercase ñ is what people actually need mid-sentence. */
+const SHORTCUT_CHAR = "ñ";
+
 /**
- * Spacebar copies the Ñ — but only while the hero is on screen. Past that,
+ * Spacebar copies the ñ — but only while the hero is on screen. Past that,
  * space goes back to scrolling the page, which is what everyone expects.
  *
  * Also guarded to the document body: if a button already has focus the
@@ -29,7 +32,7 @@ function useSpacebarShortcut() {
       if (target && target !== document.body) return;
       if (window.scrollY > window.innerHeight * 0.6) return;
       event.preventDefault();
-      copy("Ñ");
+      copy(SHORTCUT_CHAR);
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);

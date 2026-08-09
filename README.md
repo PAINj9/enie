@@ -58,7 +58,7 @@ Para cambiar cualquier texto, palabra, animal o curiosidad: `src/data/content.ts
 
 **El portapapeles tiene fallback.** `navigator.clipboard` sólo existe en contexto seguro (https o localhost). En http plano cae al viejo truco de `textarea` + `execCommand`. Si las dos fallan, el toast lo dice en vez de mentir.
 
-**La barra espaciadora copia la Ñ.** Sólo cuando el foco está en el `body`: si hay un botón enfocado gana el comportamiento nativo del navegador, y nunca secuestra la escritura en un campo.
+**La barra espaciadora copia la ñ minúscula**, que es la que se necesita en medio de una frase. Sólo cuando el foco está en el `body`: si hay un botón enfocado gana el comportamiento nativo del navegador, y nunca secuestra la escritura en un campo.
 
 **`prefers-reduced-motion` apaga todo:** el loop del hero, el burst de partículas, el autoplay del carrusel y el smooth scroll.
 
