@@ -18,8 +18,13 @@ export const HERO = {
   title: "¿Necesitás una Ñ?",
   subtitle:
     "El camino más rápido a la Ñ. Un clic, al portapapeles, y seguís con tu vida.",
-  primary: "Copiar Ñ",
-  secondary: "Copiar ñ",
+  action: "Copiar",
+  // The lowercase ñ is the primary button: it's the one people need in the
+  // middle of a word. The uppercase sits next to it, one tap away.
+  primaryChar: "ñ",
+  primaryLabel: "Copiar la eñe minúscula al portapapeles",
+  secondaryChar: "Ñ",
+  secondaryLabel: "Copiar la eñe mayúscula al portapapeles",
   hint: "O apretá la barra espaciadora para la ñ minúscula",
 } as const;
 
@@ -32,77 +37,6 @@ export const COPY_MESSAGES = [
   "Andá, pegala en algún lado.",
   "Servida como el primer día: 1250 d. C.",
 ] as const;
-
-/* ── Quick characters ─────────────────────────────────────────────── */
-
-export type QuickChar = { char: string; name: string };
-
-export const QUICK_CHARS: QuickChar[] = [
-  { char: "Ñ", name: "eñe mayúscula" },
-  { char: "ñ", name: "eñe minúscula" },
-  { char: "Á", name: "a con acento" },
-  { char: "É", name: "e con acento" },
-  { char: "Í", name: "i con acento" },
-  { char: "Ó", name: "o con acento" },
-  { char: "Ú", name: "u con acento" },
-  { char: "Ü", name: "u con diéresis" },
-  { char: "¿", name: "apertura de interrogación" },
-  { char: "¡", name: "apertura de exclamación" },
-];
-
-export const CHARS_SECTION = {
-  label: "Bonus track",
-  title: "Y todo lo demás que tu teclado se olvidó",
-  note: "Un clic y está copiado. Mantené apretado para copiar varios seguidos... mentira, con un clic alcanza.",
-} as const;
-
-/* ── Stats ────────────────────────────────────────────────────────── */
-
-export const STATS_SECTION = {
-  label: "Números",
-  title: "El estado de la Ñ hoy",
-  disclaimer:
-    "Estimados con mucho cariño y cero rigor científico. Tu contador, en cambio, es completamente real y vive en tu navegador.",
-} as const;
-
-export type StatDef = {
-  id: string;
-  label: string;
-  /** Base value at midnight, before the day's simulated growth. */
-  base: number;
-  /** How much it grows over a full day. */
-  perDay: number;
-  suffix?: string;
-};
-
-export const SIMULATED_STATS: StatDef[] = [
-  { id: "copies", label: "Ñ copiadas hoy", base: 0, perDay: 18400 },
-  {
-    id: "espana",
-    label: "Personas salvadas de escribir «Espana»",
-    base: 0,
-    perDay: 4200,
-  },
-  {
-    id: "ano",
-    label: "Veces que alguien escribió «Ano» queriendo decir «Año»",
-    base: 0,
-    perDay: 1370,
-  },
-];
-
-export const TOP_COUNTRIES = [
-  "México",
-  "España",
-  "Argentina",
-  "Colombia",
-  "Filipinas",
-  "Estados Unidos",
-  "Perú",
-  "Chile",
-] as const;
-
-export const PERSONAL_STAT_LABEL = "Ñ que copiaste vos";
 
 /* ── Word of the day ──────────────────────────────────────────────── */
 
@@ -216,6 +150,10 @@ export const WORDS: Word[] = [
   },
 ];
 
+export const DAILY_SECTION = {
+  label: "Palabras con Ñ",
+} as const;
+
 export const WORD_SECTION = {
   label: "Palabra del día",
   meaningLabel: "Significado",
@@ -274,103 +212,6 @@ export const ANIMAL_SECTION = {
   label: "Animal del día",
 } as const;
 
-/* ── Trivia cards ─────────────────────────────────────────────────── */
-
-export type Trivia = { title: string; body: string };
-
-export const TRIVIA: Trivia[] = [
-  {
-    title: "Nació para ahorrar pergamino",
-    body: "Los copistas medievales escribían mucho y el pergamino costaba caro. Para abreviar la doble «nn» pusieron una raya encima de una sola N. Esa raya se curvó, se quedó, y hoy es una letra.",
-  },
-  {
-    title: "Tiene más de ocho siglos",
-    body: "La abreviatura ya aparece en manuscritos castellanos de la Edad Media. La Ñ es más vieja que casi cualquier país donde hoy se usa.",
-  },
-  {
-    title: "Es una letra, no una N adornada",
-    body: "Ocupa el puesto 15 del alfabeto español, entre la N y la O, con entrada propia en el diccionario. No es una variante: es otra letra.",
-  },
-  {
-    title: "La raya tiene nombre",
-    body: "Se llama virgulilla. Del latín «virgula», varita. Es el mismo signo que corona la ã y la õ del portugués.",
-  },
-  {
-    title: "Cada idioma la resolvió a su manera",
-    body: "El mismo sonido se escribe «nh» en portugués, «gn» en francés e italiano, «ny» en catalán y «ń» en polaco. Sólo el castellano lo comprimió en un carácter con sombrero.",
-  },
-  {
-    title: "Hubo que defenderla por decreto",
-    body: "A principios de los noventa una propuesta comunitaria de estandarizar teclados amenazaba con dejarla afuera. Hubo protesta pública —García Márquez entre las voces más fuertes— y España la protegió por ley.",
-  },
-  {
-    title: "No es sólo del castellano",
-    body: "También la usan el gallego, el euskera, el guaraní, el quechua, el aimara, el mapudungun, el chamorro, el tetun, el wolof y el filipino.",
-  },
-  {
-    title: "Es un logo",
-    body: "El Instituto Cervantes, el organismo que difunde el español en el mundo, eligió la Ñ como su símbolo. Una letra convertida en marca.",
-  },
-];
-
-export const TRIVIA_SECTION = {
-  label: "Curiosidades",
-  title: "Ocho cosas sobre una sola letra",
-  prev: "Curiosidad anterior",
-  next: "Curiosidad siguiente",
-} as const;
-
-/* ── Where the Ñ lives ────────────────────────────────────────────── */
-
-export const COUNTRIES = [
-  "Argentina",
-  "Bolivia",
-  "Chile",
-  "Colombia",
-  "Costa Rica",
-  "Cuba",
-  "Ecuador",
-  "El Salvador",
-  "España",
-  "Guatemala",
-  "Guinea Ecuatorial",
-  "Honduras",
-  "México",
-  "Nicaragua",
-  "Panamá",
-  "Paraguay",
-  "Perú",
-  "República Dominicana",
-  "Uruguay",
-  "Venezuela",
-] as const;
-
-export const OTHER_LANGUAGES = [
-  "Gallego",
-  "Euskera",
-  "Asturiano",
-  "Guaraní",
-  "Quechua",
-  "Aimara",
-  "Mapudungun",
-  "Chamorro",
-  "Tetun",
-  "Filipino",
-  "Wolof",
-  "Zapoteco",
-] as const;
-
-export const MAP_SECTION = {
-  label: "Geografía",
-  title: "¿Dónde vive la Ñ?",
-  body: "El español es idioma oficial o cooficial en veinte países soberanos, más Puerto Rico. En todos ellos la Ñ no es un adorno: es la diferencia entre decir una cosa y decir otra.",
-  countriesLabel: "Español oficial o cooficial",
-  extraNote: "Y Puerto Rico, donde también es cooficial.",
-  languagesLabel: "Otros idiomas que también usan la Ñ",
-  languagesBody:
-    "La letra se exportó. Cuando el castellano se cruzó con otras lenguas, muchas adoptaron el carácter para escribir el sonido que ya tenían.",
-} as const;
-
 /* ── Minimal pairs ────────────────────────────────────────────────── */
 
 export type Pair = {
@@ -390,25 +231,11 @@ export const PAIRS: Pair[] = [
     note: "El caso más famoso, y el motivo por el que «Feliz ano nuevo» arruinó más de un mensaje de fin de año.",
   },
   {
-    withN: "Campaña",
-    withoutN: "Campana",
-    meaningWith: "Conjunto de acciones con un objetivo.",
-    meaningWithout: "Objeto de metal que suena al golpearlo.",
-    note: "Una se lanza, la otra se toca. Confundirlas cambia bastante el presupuesto.",
-  },
-  {
     withN: "Moño",
     withoutN: "Mono",
     meaningWith: "Lazo, o el pelo recogido.",
     meaningWithout: "Primate.",
     note: "«Se hizo un moño» y «se hizo un mono» describen mañanas muy distintas.",
-  },
-  {
-    withN: "Cañón",
-    withoutN: "Canon",
-    meaningWith: "Arma de artillería, o un desfiladero.",
-    meaningWithout: "Norma, modelo o conjunto de obras de referencia.",
-    note: "El Gran Cañón y el gran canon literario no tienen nada que ver.",
   },
   {
     withN: "Peña",
@@ -430,10 +257,6 @@ export const PAIRS_SECTION = {
 /* ── Footer ───────────────────────────────────────────────────────── */
 
 export const FOOTER = {
-  title: "¿Te salvó esta Ñ?",
-  body: "ENIE es gratis, no tiene anuncios, no te pide un mail y no guarda nada tuyo fuera de tu propio navegador. Si te sacó de un apuro, podés invitarme un café.",
-  coffee: "Invitame un café",
-  coffeeNote: "Link de donaciones pendiente de configurar.",
   builtBy: "Hecho con una sola Ñ de más.",
   legal: "Proyecto concepto. Sin cookies, sin tracking, sin servidor.",
 } as const;

@@ -61,8 +61,17 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: EASE, delay: 0.45 }}
           className="mt-10 flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:gap-4"
         >
-          <CopyButton char="Ñ" label={HERO.primary} />
-          <CopyButton char="ñ" label={HERO.secondary} variant="secondary" />
+          <CopyButton
+            char={HERO.primaryChar}
+            action={HERO.action}
+            label={HERO.primaryLabel}
+          />
+          <CopyButton
+            char={HERO.secondaryChar}
+            action={HERO.action}
+            label={HERO.secondaryLabel}
+            variant="secondary"
+          />
         </motion.div>
 
         <motion.p
@@ -87,7 +96,7 @@ export default function Hero() {
         )}
 
         <motion.a
-          href="#caracteres"
+          href="#palabras"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.1 }}

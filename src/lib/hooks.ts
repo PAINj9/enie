@@ -72,21 +72,6 @@ export function usePrefersReducedMotion(): boolean {
   return reduced;
 }
 
-/**
- * Re-renders on an interval. Used for the live stat tick — cheap, and it lets
- * the numbers derive from the clock instead of being stored in state.
- */
-export function useTicker(intervalMs: number): number {
-  const [tick, setTick] = useState(0);
-
-  useEffect(() => {
-    const id = window.setInterval(() => setTick((t) => t + 1), intervalMs);
-    return () => window.clearInterval(id);
-  }, [intervalMs]);
-
-  return tick;
-}
-
 /** Runs a callback and auto-resets a flag after a delay. Cleans up on unmount. */
 export function useFlash(duration = 1800) {
   const [active, setActive] = useState(false);

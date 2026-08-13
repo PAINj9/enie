@@ -1,6 +1,6 @@
 # ENIE — the home of Ñ
 
-Landing de una sola pantalla que resuelve un problema real: copiar la letra **Ñ** cuando el teclado no la tiene. Un clic, al portapapeles, listo. Alrededor de eso, una experiencia sobre la eñe: palabra del día, animal del día, curiosidades y pares mínimos.
+Landing de una sola pantalla que resuelve un problema real: copiar la letra **Ñ** cuando el teclado no la tiene. Un clic, al portapapeles, listo. Alrededor de eso, una experiencia sobre la eñe: palabra y animal del día, y los pares mínimos que demuestran para qué sirve.
 
 ## Correrlo
 
@@ -41,18 +41,18 @@ src/
   data/content.ts        TODO el contenido del sitio. Fuente única de verdad.
   lib/
     daily.ts             lo que rota "una vez por día", derivado de la fecha local
-    hooks.ts             usePersistent, portapapeles, reduced-motion, ticker
+    hooks.ts             usePersistent, portapapeles, reduced-motion, flash
     copy-context.tsx     estado global de copiado: contador, toast, pulse
-  components/            Nav, Footer, Toast, CopyButton, CharGrid, EnieMark, EnieBurst
-  components/ui/         primitives compartidas (Reveal, Section, Label…)
-  sections/              Hero, Characters, Stats, DailyDuo, Trivia, WhereItLives, Pairs
+  components/            Nav, Footer, Toast, CopyButton, EnieMark, EnieBurst
+  components/ui/         primitives compartidas (Reveal, Section, SectionHead…)
+  sections/              Hero, DailyDuo, Pairs
 ```
 
 Para cambiar cualquier texto, palabra, animal o curiosidad: `src/data/content.ts`. Los componentes no hardcodean copy.
 
 ## Decisiones que conviene conocer
 
-**Las estadísticas simuladas están declaradas como tales.** `simulatedCounter()` arranca en 0 a medianoche y sube durante el día con una curva de aceleración, sembrada con la fecha local: el mismo día da el mismo número para todos, y no parpadea entre renders. La sección lo aclara en pantalla. El único número real es **tus copias**, que vive en `localStorage` bajo `enie:count`.
+**El contador de copias es real y es tuyo.** Vive en `localStorage` bajo `enie:count` y se muestra en el hero. No hay servidor ni analytics: nadie más lo ve.
 
 **La palabra y el animal del día no son aleatorios.** `pickOfTheDay()` usa los días transcurridos desde epoch módulo el largo de la lista. Cambia a medianoche, en la zona horaria del visitante, sin servidor.
 
@@ -64,7 +64,6 @@ Para cambiar cualquier texto, palabra, animal o curiosidad: `src/data/content.ts
 
 ## Pendiente
 
-- **Botón de café deshabilitado a propósito.** No hay cuenta de Buy Me a Coffee / Ko-fi configurada. Para activarlo: en `src/components/Footer.tsx` reemplazar el `<button disabled>` por un `<a href="…" target="_blank" rel="noopener noreferrer">` y borrar `FOOTER.coffeeNote` de `content.ts`.
 - **Dominio placeholder.** `enie.example` aparece en el canonical, el JSON-LD, `robots.txt` y `sitemap.xml`. Al comprar el dominio real hay que reemplazarlo en esos cuatro lugares.
 
 ## Deploy

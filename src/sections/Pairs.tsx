@@ -74,7 +74,7 @@ export default function Pairs() {
                   <strong className="font-medium text-bone">{pair.withN}:</strong>{" "}
                   {pair.meaningWith}
                 </p>
-                <p className="text-[14px] leading-relaxed text-bone/50">
+                <p className="text-[14px] leading-relaxed text-bone/60">
                   <strong className="font-medium text-bone/70">{pair.withoutN}:</strong>{" "}
                   {pair.meaningWithout}
                 </p>

@@ -1,6 +1,7 @@
 import {
   ANIMALS,
   ANIMAL_SECTION,
+  DAILY_SECTION,
   WORDS,
   WORD_SECTION,
 } from "../data/content";
@@ -14,11 +15,11 @@ export default function DailyDuo() {
   const today = formatDate();
 
   return (
-    <section id="del-dia" className="border-t border-bone/10 bg-ink text-bone">
+    <section id="palabras" className="border-t border-bone/10 bg-ink text-bone">
       <div className="mx-auto max-w-shell px-5 py-20 sm:px-8 md:py-28">
         <Reveal className="flex flex-wrap items-baseline justify-between gap-3">
           <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-bone/50">
-            Hoy en la Ñ
+            {DAILY_SECTION.label}
           </span>
           <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-lime">
             {today}
@@ -69,7 +70,8 @@ export default function DailyDuo() {
             <div className="mt-8 sm:max-w-xs">
               <CopyButton
                 char={word.word}
-                label={`Copiar «${word.word}»`}
+                action="Copiar"
+                label={`Copiar la palabra ${word.word} al portapapeles`}
                 variant="secondary"
               />
             </div>

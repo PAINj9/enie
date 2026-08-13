@@ -6,7 +6,11 @@ import { useFlash } from "../lib/hooks";
 import EnieBurst from "./EnieBurst";
 
 type Props = {
+  /** What lands in the clipboard, and what's drawn in the display face. */
   char: string;
+  /** Visible verb before the glyph. */
+  action: string;
+  /** Full accessible name — screen readers get "eñe minúscula", not "ñ". */
   label: string;
   variant?: "primary" | "secondary";
   className?: string;
@@ -15,9 +19,13 @@ type Props = {
 /**
  * The one button that matters. Keeps its own "just copied" flash so two
  * buttons on screen don't both light up when only one was pressed.
+ *
+ * The character is rendered in the display face, oversized: ñ and Ñ differ by
+ * one glyph, and at UI text size the two buttons look nearly identical.
  */
 export default function CopyButton({
   char,
+  action,
   label,
   variant = "primary",
   className = "",
@@ -45,7 +53,7 @@ export default function CopyButton({
     <motion.button
       type="button"
       onClick={handleClick}
-      aria-label={`${label} al portapapeles`}
+      aria-label={label}
       className={`${base} ${skin} ${className}`}
       whileHover={{ y: -2 }}
       whileTap={{ scale: 0.97 }}
@@ -81,7 +89,15 @@ export default function CopyButton({
         </AnimatePresence>
       </span>
 
-      <span>{label}</span>
+      <span aria-hidden="true" className="flex items-baseline gap-1.5">
+        {action}
+        {/* Fraunces has a tall x-height, so it already reads bigger than the
+            sans around it. The serif alone marks the glyph — the size barely
+            has to move. */}
+        <span className="font-display leading-none" style={{ fontSize: "1em" }}>
+          {char}
+        </span>
+      </span>
     </motion.button>
   );
 }

@@ -2,13 +2,9 @@ import { useEffect } from "react";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
 import Toast from "./components/Toast";
-import Characters from "./sections/Characters";
 import DailyDuo from "./sections/DailyDuo";
 import Hero from "./sections/Hero";
 import Pairs from "./sections/Pairs";
-import Stats from "./sections/Stats";
-import Trivia from "./sections/Trivia";
-import WhereItLives from "./sections/WhereItLives";
 import { useCopy } from "./lib/copy-context";
 
 /** The lowercase ñ is what people actually need mid-sentence. */
@@ -55,11 +51,7 @@ export default function App() {
 
       <main id="main">
         <Hero />
-        <Characters />
-        <Stats />
         <DailyDuo />
-        <Trivia />
-        <WhereItLives />
         <Pairs />
       </main>
 

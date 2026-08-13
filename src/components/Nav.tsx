@@ -3,11 +3,8 @@ import { SITE } from "../data/content";
 import { useCopy } from "../lib/copy-context";
 
 const LINKS = [
-  { href: "#caracteres", label: "Caracteres" },
-  { href: "#numeros", label: "Números" },
-  { href: "#del-dia", label: "Hoy" },
-  { href: "#curiosidades", label: "Curiosidades" },
-  { href: "#donde", label: "Dónde" },
+  { href: "#palabras", label: "Palabras" },
+  { href: "#pares", label: "Pares" },
 ];
 
 export default function Nav() {
@@ -39,7 +36,8 @@ export default function Nav() {
           </span>
         </a>
 
-        <ul className="hidden items-center gap-7 lg:flex">
+        {/* Three links fit on a phone now that the menu is shorter. */}
+        <ul className="hidden items-center gap-5 sm:flex sm:gap-7">
           {LINKS.map((link) => (
             <li key={link.href}>
               <a
